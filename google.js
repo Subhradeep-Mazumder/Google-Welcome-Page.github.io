@@ -47,8 +47,7 @@ function entercheck(event) {
     }
 }
 
-/*}
-*/
+
 function remove(a) {
     searcheditems.splice(a, 1);
     localStorage.removeItem("history");
