@@ -1,0 +1,82 @@
+<html>
+    <head>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta charset="UTF-8">
+    <meta content="origin" name="referrer">
+    <link rel="icon" href="icon.png" type="image/icon type">
+    <title>Google</title>
+    <link href="google.css" rel="stylesheet" />
+    </head>
+    <body onload="main()">
+    <div id="total">
+        <div id="content">
+            <span>
+                <center>
+                    <div id="image">
+                        <img alt="Google" width="272" Style="padding-top: 109px;" height="92" src="googlepic.png"/>
+                    </div>
+                    <div id="search">
+                        <div id="inputtext">
+                            <div id="textinside">
+                                <div id="searchsymbol">
+                                    <svg Style="fill: #9AA0A6" width="20" hight="20" focouseable="false" xmlns="">
+                                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                    </svg>
+                                </div>
+                                <div id="input">
+                                    <input id="text" onfocus="historydisplay()"  onkeydown="historyout(event)" onkeyup="entercheck(event)" maxlength="2024" type="text">
+                                </div>
+                                <div id="mike">
+                                    <img width="24" hight="24" src="mike.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="history">
+                            <div id="historylist">
+                                <div id="gap"></div>
+                                <ul id="list" role="listbox">
+                                </ul>
+                                <div id="button">
+                                    <center>
+                                        <input id="searchbutton"  onclick="search()"value="Google Search" type="submit">
+                                        <input id="lucky" value="I'm Feeling Lucky" type="submit">
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="buttons">
+                            <center>
+                                <input id="searchbutton"  onclick="search()"value="Google Search" type="submit">
+                                <input id="lucky" value="I'm Feeling Lucky" type="submit">
+                            </center>
+                        </div>
+                    </div>
+                    
+                    <div id="language">
+                        Google offered in:  <a href="">हिन्दी</a>    <a href="">বাংলা</a>    <a href="">తెలుగు</a>    <a href="">मराठी</a>    <a href="">தமிழ்</a>    <a href="">ગુજરાતી</a>    <a href="">ಕನ್ನಡ</a>    <a href="">മലയാളം</a>    <a href="">ਪੰਜਾਬੀ</a>
+                    </div>
+                </center>
+            </span>
+        </div>
+        <footer>
+            <div id="footer">
+                <div id="country">
+                    <span >India</span>
+                </div>
+                <span id="footerright">
+                    <a class="right">Privacy</a>
+                    <a class="right">Terms</a>
+                    <a class="right">Settings</a>
+                </span>
+                <span id="footleft">
+                    <a class="left">Advertising</a>
+                    <a class="left">Business</a>
+                    <a class="left">About</a>
+                    <a class="left">How Search works</a>
+                </span>
+            </div>
+        </footer>
+    </div>
+    <script src="google.js"></script>
+    </body>
+</html>
