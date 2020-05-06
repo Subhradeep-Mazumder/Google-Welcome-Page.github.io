@@ -15,7 +15,7 @@ function add() {
     searcheditems.push(searched);
 }
 function historydisplay() {
-    if (searcheditems.length !== 0) {
+    if (searcheditems.length) {
         document.getElementById('history').style.display = "block"
         document.getElementById('inputtext').style.borderBottomLeftRadius = 0;
         document.getElementById('inputtext').style.borderBottomRightRadius = 0;
@@ -39,7 +39,7 @@ function entercheck(event) {
     if (event.keyCode === 13) { return search(); }
     if(document.getElementById("text").value=="")
     {
-        if (searcheditems.length !== 0) {
+        if (searcheditems.length) {
             document.getElementById('history').style.display = "block"
             document.getElementById('inputtext').style.borderBottomLeftRadius = 0;
             document.getElementById('inputtext').style.borderBottomRightRadius = 0;
@@ -88,9 +88,11 @@ function onDocClick(e) {
         // }
        
     } else {
-        document.getElementById('history').style.display = "block"
-        document.getElementById('inputtext').style.borderBottomLeftRadius = 0;
-        document.getElementById('inputtext').style.borderBottomRightRadius = 0;
+        if (searcheditems.length) {
+            document.getElementById('history').style.display = "block"
+            document.getElementById('inputtext').style.borderBottomLeftRadius = 0;
+            document.getElementById('inputtext').style.borderBottomRightRadius = 0;
+        }
     }
 
     
