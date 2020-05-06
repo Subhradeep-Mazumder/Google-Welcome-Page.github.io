@@ -26,19 +26,25 @@ function historydisplay() {
     }
 }
 function historyout(ea) {
-    // setTimeout(function () {
-    console.log("input blur");
-        var e = ea.target;
+           var e = ea.target;
         var element = document.getElementById("search")
-        if (e.id !== element && !element.contains(e)) {
+        if (e.value == "") {
             document.getElementById('history').style.display = "none";
             document.getElementById('inputtext').style.borderRadius = "24px";
-        }
+       }
         else return;
-    // }, 1);
+    
 }
 function entercheck(event) {
     if (event.keyCode === 13) { return search(); }
+    if(document.getElementById("text").value=="")
+    {
+        if (searcheditems.length !== 0) {
+            document.getElementById('history').style.display = "block"
+            document.getElementById('inputtext').style.borderBottomLeftRadius = 0;
+            document.getElementById('inputtext').style.borderBottomRightRadius = 0;
+        }
+    }
 }
 
 /*}
