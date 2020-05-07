@@ -1,7 +1,12 @@
 var searcheditems = [];
-function search() {
-    var input = document.getElementById('text');
-    var searched = input.value;
+function search(ed) {
+    if(ed =="text")
+    var input = document.getElementById('text').value;
+    else
+    var input = ed.target.innerHTML;
+
+
+    var searched = input;
     if (searched !== null && searched !== "") {
         (searcheditems.length <= 10) ? searcheditems.push(searched) : add();
         var url = "https://www.google.com/search?hl=en&sxsrf=ALeKk02JERweK5uzl8aLql4wYsv2sBVhpw%3A1585637270109&ei=lueCXvW0BvCD4-EPl6CCoAE&q=" + searched + "&oq=" + searched + "&gs_lcp=CgZwc3ktYWIQDDIECCMQJzIECCMQJzIECCMQJzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzoECAAQR1CTwQFY9tQBYPPsAWgAcAJ4AIABtweIAe0RkgEHNC0xLjAuMpgBAKABAaoBB2d3cy13aXo&sclient=psy-ab&ved=0ahUKEwj11-iRj8ToAhXwwTgGHReQABQQ4dUDCAs";
@@ -15,6 +20,7 @@ function add() {
     searcheditems.push(searched);
 }
 function historydisplay() {
+    console.log(searcheditems.length);
     if (searcheditems.length) {
         document.getElementById('history').style.display = "block"
         document.getElementById('inputtext').style.borderBottomLeftRadius = 0;
@@ -26,17 +32,19 @@ function historydisplay() {
     }
 }
 function historyout(ea) {
-           var e = ea.target;
+    // setTimeout(function () {
+    //console.log("input blur");
+        var e = ea.target;
         var element = document.getElementById("search")
         if (e.value == "") {
             document.getElementById('history').style.display = "none";
             document.getElementById('inputtext').style.borderRadius = "24px";
        }
         else return;
-    
+    // }, 1);
 }
 function entercheck(event) {
-    if (event.keyCode === 13) { return search(); }
+    if (event.keyCode === 13) { return search("text"); }
     if(document.getElementById("text").value=="")
     {
         if (searcheditems.length) {
@@ -47,7 +55,8 @@ function entercheck(event) {
     }
 }
 
-
+/*}
+*/
 function remove(a) {
     searcheditems.splice(a, 1);
     localStorage.removeItem("history");
@@ -57,17 +66,28 @@ function remove(a) {
 
     var list = document.getElementById("list");
     var items = Array.from(list.children);  
-    var newItems = items.filter((item, index) => {
-        return index !== a;
-    })
+    var newItems;
+    if (!(items.length > 1)) {
+        newItems = []
+    } else {
+        newItems = items.filter((item, index) => {
+            return (item.getElementsByTagName('span')[0].innerText) !== a;
+        })
+    }
 
     list.innerHTML = "";
     for(var i=0; i<newItems.length; i++) {
         list.appendChild(newItems[i])
     }
-    document.getElementById('history').style.display = "block"
-    document.getElementById('inputtext').style.borderBottomLeftRadius = 0;
-    document.getElementById('inputtext').style.borderBottomRightRadius = 0;
+    if (searcheditems.length) {
+        document.getElementById('history').style.display = "block"
+        document.getElementById('inputtext').style.borderBottomLeftRadius = 0;
+        document.getElementById('inputtext').style.borderBottomRightRadius = 0;
+    }
+    else {
+        document.getElementById('history').style.display = "none";
+        document.getElementById('inputtext').style.borderRadius = "24px";
+    }
    
 }
 
@@ -116,11 +136,11 @@ function main() {
                 + '<div class="icontimer"></div>'
                 + '<div class="historytext" role="option">'
                 + '<div class="historyinside">'
-                + '<span>' + searcheditems[I] + '</span>'
+                + '<span onclick = "search(event)">' + searcheditems[I] + '</span>'
                 + '</div>'
                 + '</div>'
                 + '<div class="remove">'
-                + '<div class="removebutton" onclick="remove(' + I + ')">remove</div>'
+                + '<div class="removebutton" onclick="remove('+"'"+ searcheditems[I] +"'"+ ')">remove</div>'
                 + '</div>'
                 + '</div>'
                 + '</li>';
